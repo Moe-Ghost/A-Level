@@ -37,17 +37,28 @@
 
 
 #3--------------------------------------
-import sys
+from sys import argv
 
-def count(text):
-    if text.find('is'):
-        return 
+index = 0
+c = 0
+
+def finder(text):
+    if ind != -1:
+        ind = text.find(' is ', ind)
+        ind +=1
+        count +=1
+    return count
+
+filename = argv[1]
+text = open(filename, 'r')
+l = text.read()
+l = l.lower()
 
 
+L = list(map(finder, l))
 
-# file = sys.argv[1]
-text = open("№5.txt", 'r')
+print(L)
+print(count)
 
-print(text[1].find('is'))
 
 text.close()
