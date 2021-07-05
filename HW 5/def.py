@@ -39,26 +39,32 @@
 #3--------------------------------------
 from sys import argv
 
-index = 0
-c = 0
+# index = 0
+# c = 0
 
-def finder(text):
-    if ind != -1:
-        ind = text.find(' is ', ind)
-        ind +=1
-        count +=1
-    return count
+# def finder(text):
+#     if ind != -1:
+#         ind = text.find(' is ', ind)
+#         ind +=1
+#         count +=1
+#     return count
+
+def finder(l):
+    if l == 'is':
+        return l
+
 
 filename = argv[1]
 text = open(filename, 'r')
 l = text.read()
 l = l.lower()
-
+l = l.split()
+count = 0
 
 L = list(map(finder, l))
 
 print(L)
-print(count)
+print(len(L))
 
 
 text.close()
