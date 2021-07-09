@@ -34,4 +34,16 @@
 
 
 
-text = open('nums.txt', r)
+file = open('nums.txt', "r")
+
+text = file.readlines()
+
+for line in text:
+	avrg = 0
+	L = []
+	line = line.rstrip()
+	s = line.split(';')
+	for i in s:
+		s = i.split()
+	
+	print(s)
