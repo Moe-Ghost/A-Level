@@ -42,8 +42,11 @@ for line in text:
 	avrg = 0
 	L = []
 	line = line.rstrip()
-	s = line.split(';')
-	for i in s:
-		s = i.split()
-	
-	print(s)
+	line = line.split()
+	line = 
+	print(line)
+
+	# L = [int(j) for i in line for j in i if j != ';']
+	# print(L)
+
+
