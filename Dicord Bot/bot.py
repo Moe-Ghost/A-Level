@@ -40,9 +40,25 @@ async def mute(ctx, member: discord.Member):
 async def unmute(ctx, member: discord.Member):
      await member.edit(mute = False)\
 
-@bot.command()
-async def ban(ctx, member: guilt.Member):
-    await guilt.Member.get_role(702425566757781596)
+def add_role(self, ctx, role:discord.Role=None):
+        """Add a role allowed to add messages to the starboard defaults to @everyone"""
+        server = ctx.message.server
+        if server.id not in self.settings:
+            await self.bot.send_message(ctx.message.channel, 
+                                        "I am not setup for the starboard on this server!\
+                                         \nuse starboard set to set it up.")
+            return
+        everyone_role = await self.get_everyone_role(server)
+        if role is None:
+            role = everyone_role
+        if role.id in self.settings[server.id]["role"]:
+            await self.bot.send_message(ctx.message.channel, "{} can already add to the starboard!".format(role.name))
+            return
+        if everyone_role.id in self.settings[server.id]["role"] and role != everyone_role:
+            self.settings[server.id]["role"].remove(everyone_role.id)
+        self.settings[server.id]["role"].append(role.id)
+        dataIO.save_json("data/star/settings.json", self.settings)
+        await self.bot.send_message(ctx.message.channel, "Starboard role set to {}.".format(role.name)) 
     
 
 bot.run(settings['token']) # Обращаемся к словарю settings с ключом token, для получения токена
