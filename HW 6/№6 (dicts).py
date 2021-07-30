@@ -31,6 +31,8 @@
 
 # print(d, '\n',wors_stud, ':', min_, '\n', best_stud, ':', max_)
 
+print("Hui loha ebanoe govno")
+
 
 
 def timetable(title):
